@@ -63,15 +63,19 @@ inputs = {
 ```
 Then, in your Hyprland home-manager configuration, add the plugin to your plugins:
 ```nix
-{inputs, ...}: let
-hyprsplit = inputs.hyprsplit.packages.${pkgs.system};
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  hyprsplit = inputs.hyprsplit.packages.${pkgs.system};
 in {
-wayland.windowManager.hyprland = {
-	enable = true;
-	plugins = [
-	hyprsplit
-	];
-};
+  wayland.windowManager.hyprland = {
+    enable = true;
+    plugins = [
+      hyprsplit
+    ];
+  };
 }
 ```
 ## Configuration
