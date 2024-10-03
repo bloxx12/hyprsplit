@@ -61,20 +61,39 @@ inputs = {
     };
   };
 ```
-Then, in your Hyprland home-manager configuration, add the plugin to your plugins:
+Then, configure hyprsplit hyprsplit in your Hyprland home-manager configuration, and add the plugin to your plugin list:
 ```nix
 {
   inputs,
   pkgs,
   ...
 }: let
-  inherit (inputs.hyprsplit.packages.${pkgs.system}) hyprsplit;
+  hyprsplit = inputs.hyprsplit.packages.${pkgs.system};
 in {
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
       hyprsplit
     ];
+    settings = {
+      plugin = {
+        hyprsplit = {
+          num_workspaces = 10;
+        };
+      };
+      bind = [
+        "SUPER, 1, split:workspace, 1"
+        "SUPER, 2, split:workspace, 2"
+        "SUPER, 3, split:workspace, 3"
+        "SUPER, 4, split:workspace, 4"
+
+        "SUPER SHIFT, 1, split:movetoworkspacesilent, 1"
+
+        "SUPER SHIFT, 6, split:movetoworkspacesilent, 6"
+        "SUPER, D, split:swapactiveworkspaces, current +1"
+        "SUPER, G, split:grabroguewindows"
+      ];
+    };
   };
 }
 ```
