@@ -68,7 +68,7 @@ Then, in your Hyprland home-manager configuration, add the plugin to your plugin
   pkgs,
   ...
 }: let
-  hyprsplit = inputs.hyprsplit.packages.${pkgs.system};
+  inherit (inputs.hyprsplit.packages.${pkgs.system}) hyprsplit;
 in {
   wayland.windowManager.hyprland = {
     enable = true;
