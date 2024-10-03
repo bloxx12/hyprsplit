@@ -47,7 +47,7 @@ Finally add the following to your config
 `hyprctl plugin load /path/to/hyprsplit/hyprsplit.so`
 
 ### NixOS
-The following code snippets describes an example installation of hyprsplit on a NixOS system:
+The following code snippets describe the most important parts of an example installation of hyprsplit on a NixOS system:
 ```nix
 inputs = {
     hyprland.url = "github:hyprwm/hyprland";
